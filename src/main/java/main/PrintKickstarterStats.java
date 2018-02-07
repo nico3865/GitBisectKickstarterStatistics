@@ -22,20 +22,31 @@ public class PrintKickstarterStats {
         System.out.println("globalAvgPledged ==> "+globalAvgPledged);
         System.out.println("globalAvgFundingGoal ==> "+globalAvgFundingGoal);
         System.out.println("percentageSucceeded ==> "+percentageSucceeded);
+        System.out.println();
         
         HashMap<String, Double> getAvgOfPledgesForAllCategories = classUnderTest.getDictOfAvgOfPledgesForAllCategories();
         for(String category : getAvgOfPledgesForAllCategories.keySet())
         {
         	Double avgForCategory = getAvgOfPledgesForAllCategories.get(category);
-        	System.out.println("avgForCategory: "+ category + " ==> " +avgForCategory);
+        	System.out.println("avgPledgedForCategory: "+ category + " ==> " +avgForCategory);
         }
+        System.out.println();
         
         HashMap<String, Double> getAvgOfPledgesForAllYears = classUnderTest.getDictOfAvgOfPledgesForAllYears();
         for(String year : getAvgOfPledgesForAllYears.keySet())
         {
         	Double avgForYear = getAvgOfPledgesForAllYears.get(year);
-        	System.out.println("avgForYear: "+ year + " ==> " +avgForYear);
+        	System.out.println("avgPledgedForYear: "+ year + " ==> " +avgForYear);
         }
+        System.out.println();
+        
+        HashMap<String, Double> getAvgOfPledgesForAllTitleLengthGroups = classUnderTest.getDictOfAvgOfPledgesForAllTitleLengthGroups();
+        for(String titleLengthGroup : getAvgOfPledgesForAllTitleLengthGroups.keySet())
+        {
+        	Double avgForTitleLengthGroup = getAvgOfPledgesForAllTitleLengthGroups.get(titleLengthGroup);
+        	System.out.println("avgPledgedForTitleLengthGroup: "+ titleLengthGroup + " ==> " +avgForTitleLengthGroup);
+        }
+        System.out.println();
         
         System.out.println("========================================== /KICKSTARTER STATS ==========================================");
 
