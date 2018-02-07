@@ -17,6 +17,41 @@ public class KickstarterStats {
 		this.csvReader = csvReader;
 	}
 	
+
+	public HashMap<String, Double> getDictOfAvgOfPledgesForAllTitleLengthGroups() 
+	{
+		Set<String> alltitleLengthGroups = csvReader.getPossibleTitleLengthGroups();
+		
+		HashMap<String, Double> results = new HashMap<String, Double>();
+		double titleLengthGroupPledgeAvg;
+		for(String titleLengthGroup : alltitleLengthGroups)
+		{
+			titleLengthGroupPledgeAvg = getAvgOfPledgesForTitleLengthGroup(titleLengthGroup);
+			results.put(titleLengthGroup, titleLengthGroupPledgeAvg);
+		}
+		return results;
+	}
+	
+	public double getAvgOfPledgesForTitleLengthGroup(String titleLengthGroup)
+	{
+		List<Map<String, String>> listOfKickstarterProjects = csvReader.getKickstartersForTitleLengthGroup(titleLengthGroup);
+		
+		double total = 0d;
+		for(Map<String, String> project : listOfKickstarterProjects)
+		{
+			String pledgedAsString = project.get("pledged");
+			double pledgedAmount = 0d;
+			try {
+				pledgedAmount = Double.parseDouble(pledgedAsString);
+			} catch (NumberFormatException e) {
+				// TODO collect all records that are badly formatted (usually due to commas or quotes in title) 
+			}
+			total += pledgedAmount;
+		}
+		double avgPledged = total / listOfKickstarterProjects.size();
+				
+		return avgPledged; 
+	}
 	
 	public HashMap<String, Double> getDictOfAvgOfPledgesForAllYears() 
 	{
