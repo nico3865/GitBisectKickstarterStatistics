@@ -61,7 +61,7 @@ public class CsvReader {
 
 			// Print the new student list for debug:
 			for (Map<String, String> entry : allEntriesFromCsv) {
-				System.out.println(entry.get("deadline"));
+				//System.out.println(entry.get("deadline"));
 			}
 			
 			return allEntriesFromCsv;
