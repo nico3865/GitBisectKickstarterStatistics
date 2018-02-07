@@ -12,7 +12,7 @@ public class TestGetGlobalAvgPledged {
 		
 		CsvReader csvReader = new CsvReader("bla");
 		KickstarterStats classUnderTest = new KickstarterStats(csvReader);
-        assertNotNull("making sure that a non-null avg pledged is returned", classUnderTest.getAvgOfPledges());
+        assertNotNull("making sure that a non-null avg pledged is returned", classUnderTest.getGlobalAvgOfPledges());
 		
 	}
 	

@@ -14,9 +14,8 @@ public class KickstarterStats {
 		this.csvReader = csvReader;
 	}
 	
-	public double getAvgOfPledges()
+	public double getGlobalAvgOfPledges()
 	{
-		CsvReader reader = new CsvReader("blah");
 		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfRecordsFromCsv();
 		
 		double total = 0d;
@@ -27,16 +26,44 @@ public class KickstarterStats {
 			try {
 				pledgedAmount = Double.parseDouble(pledgedAsString);
 			} catch (NumberFormatException e) {
-				//e.printStackTrace(); 
 				// TODO collect all records that are badly formatted (usually due to commas or quotes in title) 
 			}
 			total += pledgedAmount;
 		}
 		double avgPledged = total / listOfKickstarterProjects.size();
 		
-		System.out.println("avgPledged: "+avgPledged);
+		System.out.println("GlobalAvgPledged: "+avgPledged);
 		
 		return avgPledged; 
 	}
+	
+	public double getGlobalAvgOfFundingGoals()
+	{
+		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfRecordsFromCsv();
 		
+		double total = 0d;
+		for(Map<String, String> project : listOfKickstarterProjects)
+		{
+			String pledgedAsString = project.get("goal");
+			double goalAmount = 0d;
+			try {
+				goalAmount = Double.parseDouble(pledgedAsString);
+			} catch (NumberFormatException e) {
+				// TODO collect all records that are badly formatted (usually due to commas or quotes in title) 
+			}
+			total += goalAmount;
+		}
+		double avgGoal = total / listOfKickstarterProjects.size();
+		
+		System.out.println("GlobalAvgGoal: "+avgGoal);
+		
+		return avgGoal; 
+	}
+	
+	
+
 }
+
+
+
+
