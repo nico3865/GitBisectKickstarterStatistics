@@ -2,8 +2,9 @@
 
 This program compiles various statistics about Kickstarter projects.
 
-#### Clone and Setup instructions:
+#### Clone and Setup instructions: 
 	- Clone it from: https://github.com/nico3865/GitBisectKickstarterStatistics.git
+	- (IMPORTANT: due to a quirk, you must clone this repo to a folder that has no spaces in its absolute path)
 	- Import it in Eclipse as a Gradle project
 	- Run Gradle 
 	- Run the Main: main/PrintKickstarterStats.java
@@ -27,13 +28,14 @@ You will use Git Bisect to find two commits that introduced two bugs in this pro
 		- import Mockito:
 			- add to build.gradle: testCompile "org.mockito:mockito-core:2.+"
 			- run gradle
-		- then test the 2 faulty functions with Mockito:
+		- make a test, to test the faulty function with Mockito:
 			- mock the csv reader, and a relevant function (make it return a Map<String, String> of kickstarter entries)
 			- run your test on the bad and the good commits (d29668c2b20bb87c8793e0c0c0338c8314f9b6ab and 56945aced56e4fa07b36dbe32a7a63f28a4a4135)
 				- make sure that it fails on the bad commits and succeeds on the good commits
 			- (NB I actually committed one of the two mockito tests to get you started. So you can simply adapt that test for the second buggy function).  
 			- make a copy of your two test files on your Desktop (you might need it as you checkout different commits)
-	B) Then run Git Bisect, 
+	B) Then run Git Bisect,
+		- (IMPORTANT: start with the test that is already implemented (file is TestGetGlobalAvgGoal.java)) 
 		- open a terminal in your local git repo's folder
 		- git bisect start
 		- git bisect bad // to indicate current head is bad
