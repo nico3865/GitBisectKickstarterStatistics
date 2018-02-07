@@ -2,6 +2,8 @@ package csv;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +37,16 @@ public class CsvReader {
 			"usd pledged" 
 			};
 
-	public CsvReader(String csvFilePath) {
-		fileName = "/Users/nicolasg-chausseau/Documents/workspace/GitBisectKickstarterStatistics/data/ks-projects-201612-2.csv";
+	public CsvReader(String csvFilePath) 
+	{
+		fileName = csvFilePath;
+	}
+	
+	public CsvReader() 
+	{
+		URL fileNameURL = CsvReader.class.getResource("ks-projects-201612-2.csv");
+		fileName = fileNameURL.getPath();
+		//System.out.println(fileName);
 	}
 
 	
