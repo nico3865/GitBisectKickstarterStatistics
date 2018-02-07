@@ -11,7 +11,7 @@ This program compiles various statistics about Kickstarter projects.
 
 You will use Git Bisect to find two commits that introduced two bugs in this program.
 
-####We know that:
+#### We know that:
 	- the two bugs are: 
 		1) wrong output for percentage of successful Kickstarters.
 		2) wrong output for average for funding goals.
@@ -28,7 +28,7 @@ Of course since it's a small repo, with a short history of commit, it would be r
 
 But the goal here is to use Git Bisect.
 
-####Here are the steps to find the bugs with Git Bisect:
+#### Here are the steps to find the bugs with Git Bisect:
 	A) Make two Mockito tests for the two buggy functions (This will allow you to isolate the calculations from the csv reader logic and thus determine where each bug comes from).
 		- import mockito:
 			- add to build.gradle: testCompile "org.mockito:mockito-core:1.+"
