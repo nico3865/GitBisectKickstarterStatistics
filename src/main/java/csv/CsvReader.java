@@ -41,7 +41,8 @@ public class CsvReader {
 		fileName = "/Users/nicolasg-chausseau/Documents/workspace/GitBisectKickstarterStatistics/data/ks-projects-201612-2.csv";
 	}
 
-	public static boolean readCsvFile() {
+	
+	public static List<CSVRecord> getListOfRecordsFromCsv() {
 
 		FileReader fileReader = null;
 		CSVParser csvFileParser = null;
@@ -64,7 +65,7 @@ public class CsvReader {
 				System.out.println(entry.toMap().get("deadline"));
 			}
 			
-			return true;
+			return allEntriesFromCsv;
 			
 		} catch (Exception e) {
 			System.out.println("Error in CsvFileReader !!!");
@@ -78,7 +79,7 @@ public class CsvReader {
 				e.printStackTrace();
 			}
 		}
-		return false;
+		return null;
 
 	}
 
