@@ -9,7 +9,7 @@ public class ReadKickstarterCsv {
 	@Test
 	public void test() {
 		CsvReader classUnderTest = new CsvReader();
-        assertNotNull("making sure reading the csv file prints something", classUnderTest.getListOfRecordsFromCsv());
+        assertNotNull("making sure reading the csv file prints something", classUnderTest.getListOfAllKickstarterRecordsFromCsv());
 	}
 
 }

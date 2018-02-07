@@ -16,7 +16,7 @@ public class KickstarterStats {
 	
 	public double getGlobalAvgOfPledges()
 	{
-		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfRecordsFromCsv();
+		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfAllKickstarterRecordsFromCsv();
 		
 		double total = 0d;
 		for(Map<String, String> project : listOfKickstarterProjects)
@@ -40,7 +40,7 @@ public class KickstarterStats {
 	public double getGlobalAvgOfFundingGoals()
 	{
 		// TODO: create helper avg function that takes List<Map<String, String>> as input so it can be tested more easily
-		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfRecordsFromCsv();
+		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfAllKickstarterRecordsFromCsv();
 		
 		double total = 0d;
 		for(Map<String, String> project : listOfKickstarterProjects)
@@ -64,7 +64,7 @@ public class KickstarterStats {
 	public double getPercentageThatReachedFundingGoal()
 	{
 		// TODO: create helper avg function that takes List<Map<String, String>> as input so it can be tested more easily
-		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfRecordsFromCsv();
+		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfAllKickstarterRecordsFromCsv();
 		
 		double numSuccesses = 0d;
 		for(Map<String, String> project : listOfKickstarterProjects)

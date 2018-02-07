@@ -20,6 +20,7 @@ import org.apache.commons.csv.CSVRecord;
 public class CsvReader {
 	
 	private String fileName;
+	private List<Map<String, String>> allEntriesFromCsv = null;
 	
 	private static final String[] FILE_HEADER_MAPPING = {
 			"ID", 
@@ -50,7 +51,12 @@ public class CsvReader {
 	}
 
 	
-	public List<Map<String, String>> getListOfRecordsFromCsv() {
+	public List<Map<String, String>> getListOfAllKickstarterRecordsFromCsv() {
+		
+		if(allEntriesFromCsv != null)
+		{
+			return allEntriesFromCsv;
+		}
 
 		FileReader fileReader = null;
 		CSVParser csvFileParser = null;
@@ -91,6 +97,8 @@ public class CsvReader {
 		return null;
 
 	}
+	
+
 	
 
 
