@@ -31,7 +31,8 @@ You will use Git Bisect to find two commits that introduced two bugs in this pro
 			- mock the csv reader, and a relevant function (make it return a Map<String, String> of kickstarter entries)
 			- run your test on the bad and the good commits (d29668c2b20bb87c8793e0c0c0338c8314f9b6ab and 56945aced56e4fa07b36dbe32a7a63f28a4a4135)
 				- make sure that it fails on the bad commits and succeeds on the good commits
-			- make a copy of your two test files on your Desktop (you will need it as you checkout different commits that didn't have that test yet)
+			- (NB I actually committed one of the two mockito tests to get you started. So you can simply adapt that test for the second buggy function).  
+			- make a copy of your two test files on your Desktop (you might need it as you checkout different commits)
 	B) Then run Git Bisect, 
 		- open a terminal in your local git repo's folder
 		- git bisect start
