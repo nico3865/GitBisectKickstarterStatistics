@@ -15,6 +15,7 @@ public class CollectKickstarterStats {
 		KickstarterStats classUnderTest = new KickstarterStats(csvReader);
         double globalAvgPledged = classUnderTest.getGlobalAvgOfPledges();
         double globalAvgFundingGoal = classUnderTest.getGlobalAvgOfFundingGoals();
+        double percentageSucceeded = classUnderTest.getPercentageThatReachedFundingGoal();
         
         System.out.println("========================================== /KICKSTARTER STATS ==========================================");
 
