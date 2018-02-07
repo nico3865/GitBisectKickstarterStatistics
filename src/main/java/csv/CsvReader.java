@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.print.DocFlavor.URL;
 
@@ -42,7 +43,7 @@ public class CsvReader {
 	}
 
 	
-	public static List<CSVRecord> getListOfRecordsFromCsv() {
+	public static List<Map<String, String>> getListOfRecordsFromCsv() {
 
 		FileReader fileReader = null;
 		CSVParser csvFileParser = null;
@@ -50,19 +51,20 @@ public class CsvReader {
 		CSVFormat csvFileFormat = CSVFormat.DEFAULT.withHeader(FILE_HEADER_MAPPING);
 
 		try {
-			List<CSVRecord> allEntriesFromCsv = new ArrayList<CSVRecord>();
+			List<Map<String, String>> allEntriesFromCsv = new ArrayList<Map<String, String>>();
 			fileReader = new FileReader(fileName);
 			csvFileParser = new CSVParser(fileReader, csvFileFormat);
 			List<CSVRecord> csvRecords = csvFileParser.getRecords();
 
 			for (int i = 1; i < csvRecords.size(); i++) {
 				CSVRecord record = csvRecords.get(i);
-				allEntriesFromCsv.add(record);
+				Map<String, String> recordAsMap = record.toMap();
+				allEntriesFromCsv.add(recordAsMap);
 			}
 
 			// Print the new student list for debug:
-			for (CSVRecord entry : allEntriesFromCsv) {
-				System.out.println(entry.toMap().get("deadline"));
+			for (Map<String, String> entry : allEntriesFromCsv) {
+				System.out.println(entry.get("deadline"));
 			}
 			
 			return allEntriesFromCsv;
@@ -82,5 +84,7 @@ public class CsvReader {
 		return null;
 
 	}
+	
+
 
 }
