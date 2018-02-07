@@ -131,8 +131,8 @@ public class CsvReader {
 			// hash by year:
 			if(hashedByYear == null){ hashedByYear = new HashMap<String, List<Map<String, String>>>(); }
 			String year = kickstarterProject.get("launched").split("-")[0];
-			double yearDouble = Double.parseDouble(year);
-			if(yearDouble > 2008 && year.matches("20\\d{2}"))
+			double yearAsDouble = Double.parseDouble(year);
+			if(yearAsDouble > 2008 && year.matches("20\\d{2}"))
 			{
 				List<Map<String, String>> bucketForYear = hashedByYear.get(year);
 				if(bucketForYear == null) { bucketForYear = new ArrayList<Map<String, String>>(); }
@@ -162,7 +162,7 @@ public class CsvReader {
 		return hashedByCategory.keySet();
 	}
 	
-	public List<Map<String, String>> getKickstartersForCategory(String category) 
+	public List<Map<String, String>> getKickstartersForCategory(String category)
 	{
 		if(hashedByCategory == null)
 		{
