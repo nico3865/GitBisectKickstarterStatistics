@@ -130,6 +130,10 @@ public class CsvReader {
 	
 	public List<Map<String, String>> getKickstartersForCategory(String category) 
 	{
+		if(hashedByCategory == null)
+		{
+			getSubsetsInData();
+		}
 		return hashedByCategory.get(category);
 	}
 	
