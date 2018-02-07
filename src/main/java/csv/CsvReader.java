@@ -25,6 +25,7 @@ public class CsvReader {
 	private List<Map<String, String>> allEntriesFromCsv = null;
 	
 	private HashMap<String, List<Map<String, String>>> hashedByCategory = null;
+	private HashMap<String, List<Map<String, String>>> hashedByYear = null;
 	
 	private static final String[] FILE_HEADER_MAPPING = {
 			"ID", 
@@ -116,7 +117,21 @@ public class CsvReader {
 			if(bucketForCategory == null) { bucketForCategory = new ArrayList<Map<String, String>>(); }
 			bucketForCategory.add(kickstarterProject);
 			hashedByCategory.put(category, bucketForCategory);
+			
+			// hash by year:
+			if(hashedByYear == null){ hashedByYear = new HashMap<String, List<Map<String, String>>>(); }
+			String year = kickstarterProject.get("launched").split("-")[0];
+			double yearDouble = Double.parseDouble(year);
+			if(yearDouble > 2008 && year.matches("20\\d{2}"))
+			{
+				List<Map<String, String>> bucketForYear = hashedByYear.get(year);
+				if(bucketForYear == null) { bucketForYear = new ArrayList<Map<String, String>>(); }
+				bucketForYear.add(kickstarterProject);
+				hashedByYear.put(year, bucketForYear);	
+			}
+			
 		}
+		
 	}
 	
 	public Set<String> getPossibleCategories() 
@@ -137,6 +152,23 @@ public class CsvReader {
 		return hashedByCategory.get(category);
 	}
 	
+	public Set<String> getPossibleYears() 
+	{
+		if(hashedByYear == null)
+		{
+			getSubsetsInData();
+		}
+		return hashedByYear.keySet();
+	}
+	
+	public List<Map<String, String>> getKickstartersForYear(String year) 
+	{
+		if(hashedByYear == null)
+		{
+			getSubsetsInData();
+		}
+		return hashedByYear.get(year);
+	}
 
 
 }
