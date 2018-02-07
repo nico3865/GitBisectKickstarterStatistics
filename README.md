@@ -6,7 +6,7 @@ This program compiles various statistics about Kickstarter projects.
 	- Clone it from: https://github.com/nico3865/GitBisectKickstarterStatistics.git
 	- Import it in Eclipse as a Gradle project
 	- Run Gradle 
-	- Run the Main: CollectKickstarterStats.java
+	- Run the Main: main/PrintKickstarterStats.java
 	- Run JUnit (some very bad dummy tests are in the src/test/java folder) 
 
 You will use Git Bisect to find two commits that introduced two bugs in this program.
