@@ -62,6 +62,7 @@ public class CsvReader {
 	{
 		URL fileNameURL = CsvReader.class.getResource("ks-projects-201612-2.csv");
 		fileName = fileNameURL.getPath();
+		fileName = fileName.replace("%20", " ");
 		//System.out.println(fileName);
 	}
 
