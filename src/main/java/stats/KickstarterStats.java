@@ -12,12 +12,23 @@ public class KickstarterStats {
 	
 	private CsvReader csvReader;
 	
+	/**
+	 * 
+	 * @param csvReader
+	 * 
+	 * Takes csvReader as dependency
+	 * 
+	 */
 	public KickstarterStats(CsvReader csvReader)
 	{
 		this.csvReader = csvReader;
 	}
 	
-
+	/**
+	 * 
+	 * @return Average Pledges for each title-length group (5-10-15 character titles, etc.)
+	 * 
+	 */
 	public HashMap<String, Double> getDictOfAvgOfPledgesForAllTitleLengthGroups() 
 	{
 		Set<String> alltitleLengthGroups = csvReader.getPossibleTitleLengthGroups();
@@ -32,6 +43,15 @@ public class KickstarterStats {
 		return results;
 	}
 	
+	/**
+	 * 
+	 * @param titleLengthGroup
+	 * @return  Average Pledges for one specific title-length group (e.g.-15 character titles)
+	 * NB: titleLengthGroup is the factor of 5 to obtain the title length 
+	 * 		- e.g. group 1 --> title is in the "less than 5 characters" group 
+	 * 		- e.g. group 3 --> "less than 15 characters" group
+	 * 
+	 */
 	public double getAvgOfPledgesForTitleLengthGroup(String titleLengthGroup)
 	{
 		List<Map<String, String>> listOfKickstarterProjects = csvReader.getKickstartersForTitleLengthGroup(titleLengthGroup);
@@ -53,6 +73,10 @@ public class KickstarterStats {
 		return avgPledged; 
 	}
 	
+	/**
+	 * 
+	 * @return Average Pledges for all years (2008 to 2016)
+	 */
 	public HashMap<String, Double> getDictOfAvgOfPledgesForAllYears() 
 	{
 		Set<String> allYears = csvReader.getPossibleYears();
@@ -67,6 +91,12 @@ public class KickstarterStats {
 		return results;
 	}
 	
+	/**
+	 * 
+	 * @param year
+	 * @return Average Pledges for a single year (2008, 2009, 2010, etc.)
+	 * 
+	 */
 	public double getAvgOfPledgesForYear(String year)
 	{
 		List<Map<String, String>> listOfKickstarterProjects = csvReader.getKickstartersForYear(year);
@@ -88,7 +118,10 @@ public class KickstarterStats {
 		return avgPledged; 
 	}
 	
-	
+	/**
+	 * 
+	 * @return Average Pledges for all categories (technology, design, food, documentaries, etc.)
+	 */
 	public HashMap<String, Double> getDictOfAvgOfPledgesForAllCategories() 
 	{
 		Set<String> allCategories = csvReader.getPossibleCategories();
@@ -103,6 +136,12 @@ public class KickstarterStats {
 		return results;
 	}
 	
+	/**
+	 * 
+	 * @param category
+	 * @return Average Pledges for one specific category (technology, design, food, documentaries, etc.)
+	 * 
+	 */
 	public double getAvgOfPledgesForCategory(String category)
 	{
 		List<Map<String, String>> listOfKickstarterProjects = csvReader.getKickstartersForCategory(category);
@@ -124,7 +163,10 @@ public class KickstarterStats {
 		return avgPledged; 
 	}
 	
-	
+	/**
+	 * 
+	 * @return Average Pledged across all Kickstarters available in csv
+	 */
 	public double getGlobalAvgOfPledges()
 	{
 		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfAllKickstarterRecordsFromCsv();
@@ -146,6 +188,10 @@ public class KickstarterStats {
 		return avgPledged; 
 	}
 	
+	/**
+	 * 
+	 * @return Average "Funding Goal" across all Kickstarters available in csv
+	 */
 	public double getGlobalAvgOfFundingGoals()
 	{
 		List<Map<String, String>> listOfKickstarterProjects = csvReader.getListOfAllKickstarterRecordsFromCsv();
@@ -167,6 +213,10 @@ public class KickstarterStats {
 		return avgGoal; 
 	}
 	
+	/**
+	 * 
+	 * @return percentage of Kickstarters that Succeded
+	 */
 	public double getPercentageThatReachedFundingGoal()
 	{
 		List<Map<String, String>> listOfKickstarterProjects = csvReader.getKickstartersForCategory("Design");
