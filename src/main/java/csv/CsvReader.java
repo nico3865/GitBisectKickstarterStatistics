@@ -107,7 +107,16 @@ public class CsvReader {
 	
 	private void getSubsetsInData() 
 	{
-		// TODO: check cache first before doing all this work:
+		if(allEntriesFromCsv == null)
+		{
+			getListOfAllKickstarterRecordsFromCsv();
+		}
+		if(hashedByCategory != null 
+				&& hashedByYear != null
+				&& hashedByTitleLength != null)
+		{
+			return;
+		}
 		
 		for(Map<String, String> kickstarterProject : allEntriesFromCsv)
 		{
