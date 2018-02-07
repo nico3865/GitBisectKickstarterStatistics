@@ -8,7 +8,7 @@ public class ReadKickstarterCsv {
 
 	@Test
 	public void test() {
-		CsvReader classUnderTest = new CsvReader("bla");
+		CsvReader classUnderTest = new CsvReader();
         assertNotNull("making sure reading the csv file prints something", classUnderTest.getListOfRecordsFromCsv());
 	}
 

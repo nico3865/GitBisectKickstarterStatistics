@@ -10,7 +10,7 @@ public class TestGetGlobalAvgGoal {
 	@Test
 	public void testNotNull() {
 		
-		CsvReader csvReader = new CsvReader("bla");
+		CsvReader csvReader = new CsvReader();
 		KickstarterStats classUnderTest = new KickstarterStats(csvReader);
         assertNotNull("making sure that a non-null avg goal is returned", classUnderTest.getGlobalAvgOfFundingGoals());
 		
